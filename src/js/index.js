@@ -123,6 +123,7 @@ let nyc = fetchTests(locations[0])
 });
 
 fillTable = (location) => {
+    //creates a table entry for each test
     let testEntry = document.createElement('tr');
     let testType = document.createElement('th');
     let testCenter = document.createElement('th');
@@ -144,5 +145,27 @@ fillTable = (location) => {
     tableContent.append(testEntry);
 }
 
+// #step 3 sort based on scheduledAt time
 
+//# step 4: Test Type Filter
 
+    //TODO: make it actually filter... 
+let nyc2 = fetchTests(locations[0])
+    .then(data => {
+        let testSelector = document.getElementById('testTypes');
+        let testType = data.test_types;
+        for (let type of testType) {
+            console.log(type.test_type);
+            createOption(type.test_type);
+        }
+    })
+
+createOption = (option) => {
+    let testSelector = document.getElementById('testTypes');
+    let o = document.createElement('option');
+    o.value = option;
+    o.text = option;
+
+    testSelector.append(o);
+
+}

@@ -1,17 +1,18 @@
 {
-  "name": "starting-code",
+  "name": "private_prep",
   "version": "1.0.0",
-  "description": "Starting Template",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Alejandro",
-  "license": "ISC",
+  "description": "Private Prep Test",
+  "main": "gulpfile.js",
   "dependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-sass": "^4.0.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alejandro Salazar",
+  "license": "ISC"
 }

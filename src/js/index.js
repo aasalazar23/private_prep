@@ -101,12 +101,48 @@ fetch(
 const fetchTests = (location) => 
     fetch(`https://dashboard.privateprep.com/feeds/practice_tests?locations=${
         location.abbreviation
-        }`).then(response => response.json()).then(data => console.log(data));
+        }`).then(response => response.json());
 
 // #step 1 - fetch data from location and print it out
 console.log(locations[0]);
 //fetchLocationTests(locations[0]) blocked by cors
 fetch('https://dashboard.privateprep.com/feeds/practice_tests?locations=nyc').then(response=> response.json()).then(data=> console.log(data));
 
-fetchTests(locations[1]);
+//fetchTests(locations[1]).then(data => console.log('data from fetch', data));
+
+// #step 2 - place test data in a table
+
+        //TODO correctly format accomidations
+
+let nyc = fetchTests(locations[0])
+    .then(data => {
+        let practiceList = data.practice_tests;
+        for (let test of practiceList) {
+            fillTable(test);
+        }
+});
+
+fillTable = (location) => {
+    let testEntry = document.createElement('tr');
+    let testType = document.createElement('th');
+    let testCenter = document.createElement('th');
+    let startTime = document.createElement('th');
+    let accommodations = document.createElement('th');
+
+    testType.append(location.test_type);
+    testCenter.append(location.test_center);
+    startTime.append(location.starts_at);
+    accommodations.append(location.accommodations);
+
+    testEntry.append(testType);
+    testEntry.append(testCenter);
+    testEntry.append(startTime);
+    testEntry.append(accommodations);
+
+    let tableContent = document.getElementById('tableContent');
+
+    tableContent.append(testEntry);
+}
+
+
 

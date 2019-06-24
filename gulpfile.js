@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync');
 
 // creates server using browserSync utility for development
@@ -57,11 +56,6 @@ function copy_css(cb) {
     gulp.src(paths.css.src)
     // do stuff here
         .pipe(sass().on("error", sass.logError))
-        .pipe(
-            autoprefixer({
-                browsers:["last 2 versions"]
-            })
-        )
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(gulp.dest(paths.css.dest));
     cb();

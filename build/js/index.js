@@ -108,13 +108,14 @@ console.log(locations[0]);
 //fetchLocationTests(locations[0]) blocked by cors
 fetch('https://dashboard.privateprep.com/feeds/practice_tests?locations=nyc').then(response=> response.json()).then(data=> console.log(data));
 
-//fetchTests(locations[1]).then(data => console.log('data from fetch', data));
+
 
 // #step 2 - place test data in a table
 
         //TODO correctly format accomidations
 
 let nyc = fetchTests(locations[0])
+        // this function tested filling the data with preselected location
     .then(data => {
         let practiceList = data.practice_tests;
         for (let test of practiceList) {
